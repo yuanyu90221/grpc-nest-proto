@@ -1,0 +1,8 @@
+{
+  "name": "grpc-nest-proto",
+  "version": "1.0.0",
+  "description": "gateway microservice proto",
+  "main": "index.js",
+  "author": "gson liang",
+  "license": "MIT"
+}
