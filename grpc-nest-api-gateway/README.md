@@ -3,7 +3,12 @@
 A gateway for accept all input request and dispatchs requests to responsible microservices
 
 ## grpc setup
-
+### install grpc
+```shell=
+yarn add @grpc/grpc-js @grpc/proto-loader @nestjs/microservices
+yarn add -D ts-node ts-proto
+```
+### package.json
 ```json
 {
   "proto:install": "yarn add git+https://github.com/yuanyu90221/grpc-nest-proto.git",
