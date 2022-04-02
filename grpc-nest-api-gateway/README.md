@@ -18,3 +18,9 @@ yarn add -D ts-node ts-proto
   "proto:all": "npm run proto:auth && npm run proto:order && npm run proto:product"
 }
 ```
+
+## run project
+
+```shell=
+npm run start:dev
+```
