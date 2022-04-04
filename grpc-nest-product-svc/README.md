@@ -11,7 +11,7 @@ yarn add -D @types/node ts-proto @types/bcrypt @types/hapi__joi
 
 ## entity
 
-```mermaid=
+```mermaid
 erDiagram
     Product {
       number id
