@@ -6,6 +6,7 @@ import { Repository } from 'typeorm';
 import { Order } from './order.entity';
 import { CreateOrderRequest, CreateOrderResponse } from './proto/order.pb';
 import {
+  DecreaseStockResponse,
   FindOneResponse,
   ProductServiceClient,
   PRODUCT_SERVICE_NAME,
@@ -49,8 +50,19 @@ export class OrderService implements OnModuleInit {
 
     await this.repository.save(order);
 
-    // const decreasedStockData: DecreaseStockResponse = await firstValueFrom(
-    //   this.productSvc.decreaseStock({ id: data.productId, orderId: order.id }),
-    // )
+    const decreasedStockData: DecreaseStockResponse = await firstValueFrom(
+      this.productSvc.decreaseStock({ id: data.productId, orderId: order.id }),
+    );
+    if (decreasedStockData.status === HttpStatus.CONFLICT) {
+      // delete order if decreaseStock fails
+      await this.repository.delete({ id: order.id });
+
+      return {
+        id: null,
+        error: decreasedStockData.error,
+        status: HttpStatus.CONFLICT,
+      };
+    }
+    return { id: order.id, error: null, status: HttpStatus.OK };
   }
 }

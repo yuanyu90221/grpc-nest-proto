@@ -1,4 +1,4 @@
-import { HttpStatus, Injectable } from '@nestjs/common';
+import { HttpStatus, Injectable, Logger } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Product } from './entity/product.entity';
@@ -16,6 +16,7 @@ import {
 
 @Injectable()
 export class ProductService {
+  private logger: Logger = new Logger('ProductService');
   @InjectRepository(Product)
   private readonly repository: Repository<Product>;
   @InjectRepository(StockDecreaseLog)
@@ -37,6 +38,8 @@ export class ProductService {
   public async createProduct(
     payload: CreateProductRequestDto,
   ): Promise<CreateProductResponse> {
+    this.logger.log(`createProduct`);
+    this.logger.log({ payload });
     const product: Product = new Product();
 
     product.name = payload.name;

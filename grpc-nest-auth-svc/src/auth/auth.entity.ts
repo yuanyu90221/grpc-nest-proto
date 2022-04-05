@@ -4,7 +4,7 @@ import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 export class Auth extends BaseEntity {
   @PrimaryGeneratedColumn()
   public id!: number;
-  @Column({ type: 'varchar' })
+  @Column({ type: 'varchar', unique: true })
   public email!: string;
   @Exclude()
   @Column({ type: 'varchar' })

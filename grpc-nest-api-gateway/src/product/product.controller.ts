@@ -3,6 +3,7 @@ import {
   Controller,
   Get,
   Inject,
+  Logger,
   OnModuleInit,
   Param,
   ParseIntPipe,
@@ -22,6 +23,7 @@ import {
 
 @Controller('product')
 export class ProductController implements OnModuleInit {
+  private logger: Logger = new Logger('ProductController');
   private svc: ProductServiceClient;
 
   @Inject(PRODUCT_SERVICE_NAME)
@@ -36,6 +38,7 @@ export class ProductController implements OnModuleInit {
   private async createProduct(
     @Body() body: CreateProductRequest,
   ): Promise<Observable<CreateProductResponse>> {
+    this.logger.debug({ ...body });
     return this.svc.createProduct(body);
   }
   @Get(':id')

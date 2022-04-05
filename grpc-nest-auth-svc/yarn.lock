@@ -2954,7 +2954,7 @@ graceful-fs@^4.1.2, graceful-fs@^4.1.6, graceful-fs@^4.2.0, graceful-fs@^4.2.4, 
 
 "grpc-nest-proto@git+https://github.com/yuanyu90221/grpc-nest-proto.git":
   version "1.0.0"
-  resolved "git+https://github.com/yuanyu90221/grpc-nest-proto.git#69a89498bd7d4ab0e98a4db82630eb05c3108667"
+  resolved "git+https://github.com/yuanyu90221/grpc-nest-proto.git#82811cdf3a091b47dfa1b930244d97d86b1ae538"
 
 has-flag@^3.0.0:
   version "3.0.0"
